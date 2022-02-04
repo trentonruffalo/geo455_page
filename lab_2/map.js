@@ -1,4 +1,4 @@
-var mymap = L.map("map").setView([43.81642117539796, -91.23209456992531], 13);
+var mymap = L.map("map").setView([49.9935, 36.2304], 13);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGFuZmVkb3JlbmtvIiwiYSI6ImNrejh6dzkyajFxN2cydm5mZDZjMXUwajIifQ.WmIAhKYTVluS0N1QKUmv6w', {
     maxZoom: 18,
@@ -9,7 +9,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1
 }).addTo(mymap);
 
-L.marker([43.81642117539796, -91.23209456992531])
+L.marker([49.9935, 36.2304])
     .addTo(mymap)
-    .bindPopup("<b>Hello!</b><br>I am University of Wisconsin La Crosse.")
+    .bindPopup("<b>Hello!</b><br>This is my home city in Ukraine where I grew up.")
     .openPopup();
