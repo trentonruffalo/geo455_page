@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS conflicts</title>
+        <style>
+            * { font-family: Arial, Verdana, sans-serif; }
+            h1 { font-family: "Courier New", monospace; }
+            i { color: green; }
+            i { color: red; }
+            b { color: pink; }
+            p b { color: blue; }
+            #intro { font-size: 100%; }
+            p { font-size: 75%; }
+        </style>
+    </head>
+    <body>
+        <h1>This is a first-level heading</h1>
+        
+        <p id="intro">This is the <i>introduction</i> paragraph. It has an <b>'id' attribute with the value of "intro"</b>. It is styled differently from all other paragraphs, using a CSS rule with an <i>ID Selector</i>.</p>
+        
+        <p style="font-size: 150%; color:green">This is the <i style="color: yellow">second</i> paragraph. It <b>does not</b> have an 'id' attribute. It uses inline style.</p>
+        
+        <p style="font-family: monospace; font-size: 100%">This is the <i>third</i> paragraph. It <b>also does not</b> have an 'id' attribute and it also uses inline style.</p>
+    </body>
+</html>
