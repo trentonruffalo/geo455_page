@@ -1,10 +1,95 @@
+
 <!DOCTYPE html>
 <html>
     <head>
        <title>geo455_lab3</title>
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <style type="text/css">
+#container {
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+#container #header {
+    font-size: 2em;
+    font-family: "Lora", serif;
+    letter-spacing: .05em;
+    padding: 10px 15px;
+    background-color: #52ab98;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    }
+#container #map {
+	background-color: #FFFFFF;
+	height: 850px;
+    }
+#container #leftMenu {
+	position: static;
+    background-color: #FFFFFF;
+	width: 300px;
+    top: 100px;
+    left: 50px;
+	float: left;
+	height: 830px;
+	margin: 0px;
+    font-size: 1em;
+    font-family: "Lora", serif;
+    letter-spacing: .05em;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 1000;
+    }
+#container #footer {
+	font-family: "Lora", serif;
+	font-size: 1em;
+    letter-spacing: .05em;
+	height: 25px;
+	background-color: #52ab98;
+    border: 1px solid black;
+    border-radius: 10px;
+	text-align: center;
+	padding-top: 3px;
+	font-style: italic;
+    }
+body {
+	background-color: #f2f2f2;
+}
+</style>
+
     </head>
-         <body bgcolor="#EDDD9E">
-       <h1 align="center">Lab 3</h1>
-       
+    <body>
+        <div id="container">
+            <div id="header">Lab 3: Dive Safari, January 2015</div>
+            <div id="leftMenu">
+                <p>Here are the dive sites I visited in chronological order:</p>
+                    <ol type="1">
+                        <li>Blue Hole</li>
+                        <li>Gordon Reef</li>
+                        <li>Thomas Reef</li>
+                        <li>Tiran Island</li>
+                        <li>Ras Mohammed</li>
+                        <li>SS Thistlegorm</li>
+                        <li>Giftun Islands</li>
+                        <li>MV Salem Express</li>
+                        <li>Al Ikhwan (Brothers Island)</li>
+                        <li>Abu Dabbab</li>
+                        <li>Elphinstone Reef</li>
+                        <li>St. John's Island</li>
+                    </ol>
+                <p><img style="width: relative; height: 150px;" src="https://i0.wp.com/diveintolife.blog/wp-content/uploads/2019/12/Elphinstone-reef-Longimanus-shark.jpg?fit=1200%2C900&ssl=1" alt="Oceanic Whitetip Shark at Elphinestone Reef, Egypt"></p>
+                <p><i><sup>Oceanic Whitetip Shark at Elphinestone Reef, Egypt</sup></i></p>
+                <p><i><sup>Photo Credits: Nico (Instagram: @ocean.nico)</sup></i></p>
+                </div>
+            <div id="map"></div>
+                <script src="map_lab3.js"></script>
+            <div id="footer">Map developed by Dan Fedorenko</div>
+        </div>
      </body>
 </html>
