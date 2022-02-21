@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>JavaScript Functions</h2>
+
+    <p id="multiply"></p>
+    <p id="square_root"></p>
+    <p id="greet"></p>
+    <p id="f2c"></p>
+    <p id="method"></p>
+    <p id="method1"></p>
+    <p id="f_name_len"></p>
+    <p id="l_name_len"></p>
+    <p id="len1"></p>
+    <p id="len2"></p>
+    <p id="pop_method"></p>
+    <p id="push_method"></p>
+
+
+
+    <script>
+        
+        function multiply(p1, p2) {
+            return p1 * p2;
+        };
+        
+        document.getElementById("multiply").innerHTML = "This is result of multiply function: "+ multiply(100, 50);
+        
+        function square_root(d){
+            return Math.sqrt(d);
+        }
+
+        document.getElementById("square_root").innerHTML = "This is result of square_root function: "+ square_root(169);
+        
+        function greeting() {
+            return ("Hello, how are you doing today?");
+        };
+        
+        document.getElementById("greet").innerHTML = "What do I say when I greet someone: "+ greeting();
+        
+        
+        
+        function to_Celsius(f) {
+            return (5/9) * (f-32);
+        };
+        
+        document.getElementById("f2c").innerHTML = "Today's temperature in Celsius is: " + to_Celsius(32);
+        
+        
+        
+        var person = {
+            firstName: "Juan",
+            lastName: "Carlos",
+            age: 50,
+            eyeColor: "brown",
+            fullName: function() {return this.firstName + " " + this.lastName;}
+        };
+        
+        document.getElementById("f_name_len").innerHTML = "The length of the first name is: " + person.firstName.length + " characters.";
+        document.getElementById("l_name_len").innerHTML = "The length of the last name is: " + person.lastName.length + " characters.";
+        
+        document.getElementById("method").innerHTML = person.fullName();
+        document.getElementById("method1").innerHTML = person.fullName().toUpperCase() + " was a spanish king";
+        
+        
+        var a = [1, 7, 15, 16, 7, [3, 4]];
+        document.getElementById("len1").innerHTML = "The length of the variable is: " + a.length;
+        document.getElementById("len2").innerHTML = "The length of the 5th element is: " + a[5].length;  
+        
+        
+        var midwest = ["Wisconsin", "Minnesota", "Iowa", "Illinois"];
+        midwest.pop();
+        document.getElementById("pop_method").innerHTML = midwest; //removes the last element
+        midwest.push("Michigan");
+        document.getElementById("push_method").innerHTML = midwest;// adds michigan at the end
+        
+    </script>
+
+</body>
+</html>

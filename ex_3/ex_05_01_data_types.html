@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>Assigning JavaScript Values</h2>
+
+    <p>In JavaScript the = operator is used to assign values to variables.</p>
+
+    <p id="variables"></p>
+    <p id="add"></p>
+    <p id="sub"></p>
+    <p id="mult1"></p>
+    <p id="mult2"></p>
+    <p id="incree"></p>
+    <p id="decree"></p>
+    <p id="sqr"></p>
+    <p id="sqrt"></p>
+    <p id="concata"></p>
+    <p id="bool"></p>
+    <p id="list"></p>
+
+    <script>
+        var x = 10;
+        var y = 9;
+        var z = 11
+        document.getElementById("variables").innerHTML = "x = " + x + "; y = " + y + "; z = " +z;
+        document.getElementById("add").innerHTML = "Addition x+y : " + (x + y);
+        document.getElementById("sub").innerHTML = "Subtraction x-y : " + (x - y);
+        document.getElementById("mult1").innerHTML = "Multiplication1 x*y : " +(x * y);
+        document.getElementById("mult2").innerHTML = "Multiplication2 x*10 : " + (x * 10);
+        
+        z++;
+        document.getElementById("incree").innerHTML = "Increment z++ : " + z;
+        
+        z--;
+        document.getElementById("decree").innerHTML = "Decrement z-- : " + z;
+
+        document.getElementById("sqr").innerHTML = "Square x : " + (x*x);
+        document.getElementById("sqrt").innerHTML = "Square root y : " + (Math.sqrt(y));
+        
+        var s1 = "Dan";
+        var s2 = "Fedorenko";
+        document.getElementById("concata").innerHTML = "String concatenation : " + s1 +" "+ s2;
+
+        var list = "<h4>Banana Bread Ingredients List:</h4>" 
+        list += "<ul>";
+        list += "<li>2 cups (250g) all-purpose flour</li>";
+        list += "<li>1 teaspoon baking soda</li>";
+        list += "<li>1/4 teaspoon salt</li>";
+        list += "<li>1/2 teaspoon ground cinnamon</li>";
+        list += "<li>1/2 cup (1 stick or 115g) unsalted butter</li>";
+        list += "<li>3/4 cup (150g) packed light or dark brown sugar</li>";
+        list += "<li>2 large eggs, at room temperature";
+        list += "<li>1/3 cup (80g) plain yogurt or sour cream</li>";
+        list += "<li>2 cups mashed bananas</li>";
+        list += "<li>1 teaspoon pure vanilla extract</li>";
+        list += "<li>3/4 cup (100g) chopped pecans or walnuts</li>";
+        list += "</ul>";
+        document.getElementById("list").innerHTML = list; // returns all values in the list
+
+        document.getElementById("bool").innerHTML = "Boolean x < y : " + (x < y);
+
+    </script>
+
+</body>
+</html>

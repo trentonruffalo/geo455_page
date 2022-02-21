@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>JavaScript Arrays</h2>
+
+    <p id="arr1"></p>
+    <p id="arr_ind1"></p>
+    <p id="arr2"></p>
+    <p id="arr_ind2"></p>
+    <p id="arr_multd"></p>
+    <p id="arr_multd_ind1"></p>
+    <p id="arr_multd_ind2"></p>
+    <p id="person_obj1"></p>
+    <p id="person_obj2"></p>
+    <p id="person_obj3"></p>
+    <p id="person_arr"></p>
+    <p id="person_arr_ind_attr"></p>
+
+
+    <script>
+        var a= [2, 3, 4, 3.5];
+        var b= [3.5, 4, 3, 2];
+        document.getElementById("arr1").innerHTML = "This is a simple array: "+ a;
+        document.getElementById("arr_ind1").innerHTML = "This is the 2nd element in the above array: "+ a[1];
+        document.getElementById("arr2").innerHTML = "This is another simple array: "+ b;
+        document.getElementById("arr_ind2").innerHTML = "This is the 1st element in the above array: "+ b[0];
+        <!--- change to a[1] and check--->
+
+        var d = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+        document.getElementById("arr_multd").innerHTML = "This is a multi-dimensional array: "+ d;
+        document.getElementById("arr_multd_ind1").innerHTML = "This is second item in the 3rd element in a multi-dimensional array: "+ d[2][1];
+        document.getElementById("arr_multd_ind2").innerHTML = "This is first item in the 2nd element in a multi-dimensional array: "+ d[1][0];
+        //change to d[1][0] and check
+        
+        // Create an object:
+        var person1 = {
+            firstName: "Juan",
+            lastName: "Carlos",
+            age: 50,
+            eyeColor: "brown",
+        };
+        
+        var person2 = {
+            firstName: "Dan",
+            lastName: "Fedorenko",
+            age: 22,
+            eyeColor: "brown",
+        };
+        
+        var person3 = {
+            firstName: "Tim",
+            lastName: "Rasmusen",
+            age: 23,
+            eyeColor: "blue",
+        };
+        
+        
+        document.getElementById("person_obj1").innerHTML = person1.firstName + " is " + person1.age + " years old.";
+        document.getElementById("person_obj2").innerHTML = person2.firstName + " is " + person2.age + " years old.";
+        document.getElementById("person_obj3").innerHTML = person3.firstName + " is " + person3.age + " years old.";
+
+
+        var person_array = [person1, person2, person3]
+        
+        document.getElementById("person_arr").innerHTML = "This is an array of person objects: Person1 (" + 
+                person_array[0].firstName + " " + person_array[0].lastName + ", " + person_array[0].age + ", " + person_array[0].eyeColor + 
+                "), Person2 (" + person_array[1].firstName + " " + person_array[1].lastName + ", " + person_array[1].age + ", " + person_array[1].eyeColor + 
+                "), Person3 ("+ person_array[2].firstName + " " + person_array[2].lastName + ", " + person_array[2].age + ", " + person_array[2].eyeColor + ")";
+        
+        document.getElementById("person_arr_ind_attr").innerHTML = "This is the eye color of the 2nd person in the person array: " + person_array[1].eyeColor;
+
+    </script>
+
+</body>
+</html>

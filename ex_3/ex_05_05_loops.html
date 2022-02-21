@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <h2>JavaScript For Loop</h2>
+
+        <p id="demo"></p>
+        <p id="demo1"></p>
+        <p id="demo2"></p>
+
+        <script>
+            var num = "";
+
+            for (var i = 0; i < 15; i+=2) { // change 10 to a different number
+                num += "The number is " + i + "<br>";
+            }
+            document.getElementById("demo").innerHTML = num;
+
+            var num_brk = "";
+
+            for (var z = 0; z < 10; z++) {
+                if(z===7) {
+                    num_brk += "The number is " + z + " lets break and get out of this loop!" + "<br>";
+                    break;
+                }
+                num_brk += "The number is " + z + " lets loop again" + "<br>";
+            }
+            document.getElementById("demo1").innerHTML = num_brk;
+
+
+            const cars = ["Tesla", "Volvo", "BMW", "Ford", "Fiat", "Audi", "Honda", "Maserati"];
+
+            var carnames = "";
+
+            for (var j = 0; j < cars.length; j++) {
+                carnames += cars[j] + "<br>";
+            }
+            document.getElementById("demo2").innerHTML = carnames;
+
+        </script>
+    </body>
+</html>
