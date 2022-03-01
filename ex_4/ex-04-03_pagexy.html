@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Event object</title>
+    </head>
+    <body>
+        <p id="position"></p>
+        <p id="click_position"></p>
+        <script>
+            var page_coord = document.getElementById("position");
+            document.addEventListener("mousemove", function(e) {
+                page_coord.innerHTML = e.pageX + " " + e.pageY;
+            });
+            
+            var click_coord = document.getElementById("click_position");
+            document.addEventListener("click", function(e) {
+                click_coord.innerHTML = "Clicked at: " + e.pageX + " " + e.pageY;
+            });
+        </script>
+    </body>
+</html>

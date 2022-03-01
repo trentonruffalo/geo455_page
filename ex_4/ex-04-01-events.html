@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript HTML Events</h2>
+    
+    
+    <h3>What can JavaScript do?</h3>
+    <button id="myBtn1">Click me!!</button>
+    <p id="demo1"></p>
+    
+    
+    
+    <h3>What's the date today?</h3>
+    <button id="myBtn2">Display current date/time</button>
+    <button id="myBtn2_1">Hide current date/time</button>
+    <p id="demo2"></p>
+    
+    <h3 onmouseover="style.color='red'" onmouseout="style.color='black'">
+        Mouse over this text</h3>
+
+    
+    <h3>This example uses the addEventListener() 
+        method to add many events on the same button.</h3>
+    <button id="myBtn3">Try it!!</button>
+    <button id="myBtn4">Clear</button>
+    <p id="demo3"></p>
+
+
+
+<script>
+    
+    document.getElementById("myBtn1").addEventListener("click", hello);
+    
+    function hello() {
+        document.getElementById("demo1").innerHTML = 
+            "JavaScript can change page contents!";
+            }
+
+    
+    
+    document.getElementById("myBtn2").addEventListener("click", displayDate);
+    document.getElementById("myBtn2_1").addEventListener("click", hideDate);
+
+    function displayDate() {
+        document.getElementById("demo2").innerHTML = Date();
+    }
+    
+    function hideDate() {
+        document.getElementById("demo2").innerHTML = "";
+    }
+    
+    var x = document.getElementById("myBtn3");
+    x.addEventListener("mouseover", myFunction);
+    x.addEventListener("click", mySecondFunction);
+    x.addEventListener("mouseout", myThirdFunction);
+    
+    var x1 = document.getElementById("myBtn4");
+    x1.addEventListener("click", myForthFunction);
+    
+    function myFunction(){
+        document.getElementById("demo3").innerHTML += "Moused over!<br>";
+    }
+    
+    function mySecondFunction() {
+        document.getElementById("demo3").innerHTML += "Clicked!<br>";
+    }
+    
+    function myThirdFunction() {
+        document.getElementById("demo3").innerHTML += "Moused out!<br>";
+    }
+    
+    function myForthFunction(){
+        document.getElementById("demo3").innerHTML = "";
+    }
+    
+    
+</script>
+
+</body>
+</html> 
