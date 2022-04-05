@@ -1,0 +1,62 @@
+<html>
+   <head>
+      <title>Ex- 6-3-3: CSS manipulation</title>
+       <style>
+           .charac {
+               float: left;
+           }
+           img {
+              width: 200px; 
+               height: 200px; 
+           }
+      </style>
+    </head>
+      <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+      </script>
+
+      <script>
+          
+//       $(document).ready(function() {
+//              $("img").click(function(){
+//                  $(this).hide();
+//              });
+//          });
+          
+        $(document).ready(function() {
+            $("#hide").click(function(){
+                $("img.normal").hide();
+                $("img.fast").hide("fast");
+                $("img.slow").hide("slow");
+                $("img.very_slow").hide(2000);
+            });
+            
+            $("#show").click(function(){
+                $("img.normal").show();
+                $("img.fast").show("fast");
+                $("img.slow").show("slow");
+                $("img.very_slow").show(2000);
+            });
+            
+//            $("img").click(function(){
+//                  $(this).hide(1000);
+//            });
+        });
+
+      </script>
+
+	
+   <body>
+       <h1> Adventures of Tintin </h1>
+       <p> Main Characters </p>
+       <div class= "charac">
+           <img class="normal" src="img/tintin-milou.jpg">
+           <img class="fast" src="img/captain-haddock_v2.jpg">
+           <img class="slow" src="img/prof_calcu.jpg">
+           <img class="very_slow" src="img/Thomson_&_Thompson.png">
+       </div>
+       <button id="hide">Hide</button>
+       <button id="show">Show</button>
+
+   </body>
+</html>

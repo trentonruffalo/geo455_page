@@ -1,0 +1,43 @@
+<html>
+   <head>
+      <title>Ex- 6-5:UI</title>
+       <style>
+           #tin{
+               float: left;
+               width: 200px;
+               height: 200px;
+           }
+           #moon {
+               float: right;
+               width: 300px;
+               height: 300px;
+           }
+                 </style>
+    </head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+      <script>
+          
+
+          $(function(){
+              $("#tin").draggable();
+              $("#moon").draggable();
+            });
+            
+          
+
+      </script>
+
+	
+   <body>
+       <h1> Tintin goes to moon</h1>
+       <div>
+           <img id="tin" src="img/tintin-milou.jpg" width="200px" height="200px"> 
+           <img id= "moon" src="img/moon.jpg" > 
+       </div>
+       
+
+   </body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+   <head>
+      <title>Ex- 6-1: DOM manipulation</title>
+      <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+      </script>
+
+      <script type = "text/javascript" language = "javascript">
+         $(document).ready(function() {
+            $("p:first").css('background-color', 'yellow');
+         });
+     
+        $(document).ready(function() {
+            $("#button1").click(function(){
+                $("li").css('color', 'red');
+                $("li:first").css('color', 'blue');
+            });
+         });
+          
+        $(document).ready(function() {
+            $("#button2").click(function(){
+                $("li").css('color', 'black');
+            });
+         });
+          
+        var design = {
+            color:"white",
+            background:"grey",
+            border:"3px solid black",
+        };
+          
+//        $("h1").css(design)  // -> console
+      </script>
+   </head>
+	
+   <body>
+       <h1> Webmapping </h1>
+       <p> Technologies we learned </p>
+       <ul>
+           <li> HTML </li>
+           <li> CSS </li>
+           <li> JavaScript </li>
+           <li> jQuery </li>
+       </ul>
+       
+       <p id="test">Check console to get the text for list</p> 
+       <button id="button1">Change list text color</button>
+       <button id="button2">Change list text color back to normal</button>
+    </body>
+</html>
