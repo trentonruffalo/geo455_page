@@ -1,10 +1,135 @@
-<!DOCTYPE html>
 <html>
-    <head>
+   <head>
        <title>geo455_lab8</title>
-    </head>
-         <body bgcolor="#EDDD9E">
-       <h1 align="center">Lab 8</h1>
-       
-     </body>
+       
+       <!-- Load jQuery from CDN -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+       <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+       
+       <!-- Load Leaflet from CDN -->
+       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+       <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+       
+       <!-- Load Googple Fonts API -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100&display=swap" rel="stylesheet">
+       
+       <!-- Load Esri Leaflet from CDN -->
+       <script src="https://unpkg.com/esri-leaflet@3.0.7/dist/esri-leaflet.js"
+        integrity="sha512-ciMHuVIB6ijbjTyEdmy1lfLtBwt0tEHZGhKVXDzW7v7hXOe+Fo3UA1zfydjCLZ0/vLacHkwSARXB5DmtNaoL/g=="
+        crossorigin=""></script>
+
+    <!-- Load Esri Leaflet Vector from CDN -->
+      <script src="https://unpkg.com/esri-leaflet-vector@3.1.2/dist/esri-leaflet-vector.js"
+            integrity="sha512-SnA/TobYvMdLwGPv48bsO+9ROk7kqKu/tI9TelKQsDe+KZL0TUUWml56TZIMGcpHcVctpaU6Mz4bvboUQDuU3w=="
+            crossorigin=""></script>
+       
+       <!---Load js--->
+       <script src="map_lab8.js"></script>
+
+       <style>
+            #container {
+                height: relative;
+                width: relative;
+                margin-top: auto;
+                margin-right: auto;
+                margin-bottom: auto;
+                margin-left: auto;}
+           #header{
+               background-color: black;
+               padding: 5px;
+               font-family: "Roboto Serif", Helvetica, Corbel, Arial, sans-serif;
+               text-align: center;
+               color: aliceblue;
+           }
+           .button {
+               background-color: #008CBA; /* Green */
+               border: 1px solid white;
+               color: white;
+               text-align: center;
+               text-decoration: none;
+               display: inline-block;
+               font-size: 16px;
+               border-radius: 6px;
+               display: block;
+               width: 200px;
+               height: 50px;
+           }
+           #container #leftmenu{
+                position: static;
+                width: 220px;
+                top: 10px;
+                left: 50px;
+                padding: 10px 15px;
+                float: left;
+                height: 780px;
+                margin: 0;
+                font-size: 1em;
+                font-family: "Lora", serif;
+                letter-spacing: .04em;
+                background-color: #9ebcda;
+                border: 1px solid grey;
+                border-radius: 3px;
+               
+           }
+          #splasher1{
+               background-color: white;
+               padding: 2px;
+               width: auto;
+               left: 20px;
+               margin-right: auto;
+               opacity: 0.7;
+               position: absolute;
+               top: 500px;
+           }
+           #splasher2{
+               background-color: white;
+               padding: 2px;
+               width: 210px;
+               left: 20px;
+               margin-left: auto;
+               margin-right: auto;
+               opacity: 0.7;
+               position: absolute;
+               top: 350px;
+               display: block;
+           }
+           #container #map{
+               height: 800px;
+               position: relative;
+           }
+           html {
+               background-color: gray;
+           }
+           .hidden { 
+               display: none; 
+           }
+       </style>
+   </head>
+
+   <body>
+       <div id= "container">
+           <div id = "header">
+                <h1> Lab 8: Mapping with ESRI leaflet and jQuery</h1> 
+           </div>
+           <div id="leftmenu">
+                <button id="btn1" class="button">Show Legend</button>
+                <button id="btn2" class="button">Hide Legend</button>
+                <button id="btn3" class="button">Show about map</button>
+                <button id="btn4" class="button">Hide about map</button>
+           </div>
+           <div id= "splasher1" class="hidden">
+                <h2>Legend</h2>
+                <img src="img/legend.jpg" width="175" height="300" align='center'><img>
+           </div>
+           <div id= "splasher2" class="hidden">
+                <h3>About the map</h3>
+                <p>The data shows wildfire risk by USDA/USFS and location of populated cities by ESRI. Click on the Wildfire map to check the risk levels, and the city markers to check their names. ESRI leaflet was used to display the datalayers.</p>
+           </div>
+           <div id="map"></div>
+           <script src="map_lab8.js"></script>
+       </div>
+   </body>
 </html>
