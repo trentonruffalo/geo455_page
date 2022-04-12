@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nearest Point</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Load Leaflet from CDN -->
+       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+       <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+       
+    <!-- Load TurfJS from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+    
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+    
+// Bounds   long/lat  
+var bounds = [-91.24767126466358, 43.82383654812337, -91.20748926566223, 43.80826537588756];
+    
+// Initialize map
+var mymap = L.map("map").fitBounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]]);
+        
+L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", 
+    {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}
+).addTo(mymap);
+
+        
+var taco = L.icon({
+    iconUrl: 'img/taco.png',
+    iconSize: [30, 30],
+    iconAnchor: [0, 0],
+});
+
+var me = L.icon({
+    iconUrl: 'img/me.png',
+    iconSize: [30, 30],
+    iconAnchor: [0, 0],
+    popupAnchor: [15,10],
+});
+        
+// Add random points
+var targetPoint = turf.point([-91.23176163704308, 43.81594921072007], {"marker-color": "#0F0"});
+var points = turf.featureCollection([
+    turf.point([-91.23936969689734, 43.81680581566446]),
+    turf.point([-91.23932097132852, 43.817786255647775]),
+    turf.point([ -91.22887096966582, 43.81261677078325]),
+    turf.point([ -91.23939169368956, 43.814414585537016,])
+]);
+
+var nearest = turf.nearestPoint(targetPoint, points);
+
+L.geoJSON(points, {
+          pointToLayer: function(feature,latlng){
+      return L.marker(latlng,{icon: taco});
+    }}).addTo(mymap);    
+        
+L.geoJSON(targetPoint, {
+    pointToLayer: function(feature,latlng){
+      return L.marker(latlng,{icon: me});
+    }}).addTo(mymap);
+        
+        
+L.geoJSON(nearest, {
+    pointToLayer: function(feature,latlng){
+      return L.circleMarker(latlng,{
+          radius: 20,
+          stroke: true,
+          color: 'red',
+          opacity: 1,
+          weight: 2,
+          fill: false,
+      });
+    }}).addTo(mymap);
+        
+    </script>
+</body>
+</html>
