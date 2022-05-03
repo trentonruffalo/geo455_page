@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GEO455 - Final Project</title>
+        <meta charset="utf-8" />
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+        <!--    Easy Button    -->
+<!--        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+
+        <!--    Bootstrap Buttons    -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!--   Side Bar     -->
+        <link rel="stylesheet" href="scr/leaflet.css" />
+        <link rel="stylesheet" href="src/L.Control.Sidebar.css" />
+        <script src="src/L.Control.Sidebar.js"></script>
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: "whitesmoke";
+                font-family: "Noto Sans", sans-serif;
+                color: #3d3d3d;
+            }
+            #title {
+                position: fixed;
+                margin-top: 0;
+                top: 10px;
+                left: 50px;
+                font-size: 2em;
+                font-family: "Lora", serif;
+                letter-spacing: .04em;
+                padding: 10px 15px;
+                background-color: rgba(255, 255, 255, 0.5);
+                border: 1px solid grey;
+                border-radius: 3px;
+                z-index: 800;
+            }
+            #description h2 {
+                font-family: "Lora", serif;
+                letter-spacing: .04em;
+            }
+            #map {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 100%;
+            }
+            .custom .leaflet-popup-tip,
+            .custom .leaflet-popup-content-wrapper {
+                background: #000000;
+                color: #ffffff;
+            }
+            .legend {
+              padding: 6px 8px;
+              line-height: 18px;
+              background: rgba(255,255,255,0.9);
+              box-shadow: 0 0 15px rgba(0,0,0,0.2);
+              border-radius: 5px;
+            }
+           .legend i {
+              width: 18px;
+              height: 18px;
+              float: left;
+              margin-right: 8px;
+              opacity: 0.7;
+            }
+            #description p {
+                font-size: .9em;
+                line-height: 1.5em;
+            }
+            #description a {
+                color: #005daa;
+                text-decoration: none;
+            }
+            #description a:hover {
+                text-decoration: underline;
+            }
+            .btn.btn-secondary.selected{
+                background-color:#00A67E;
+            }
+            .cerf_logo:hover{
+                transform:scale(1.05); 
+            }
+        </style>
+
+        <!--   Load Data    -->
+        <script src="Data/countries_totals.geojson"></script>
+        <script src="Data/countries_cholera.geojson"></script>
+        <script src="Data/countries_displacement.geojson"></script>
+        <script src="Data/countries_drought.geojson"></script>
+        <script src="Data/countries_earthquake.geojson"></script>
+        <script src="Data/countries_ebola.geojson"></script>
+        <script src="Data/countries_economicDisruptions.geojson"></script>
+        <script src="Data/countries_flood.geojson"></script>
+        <script src="Data/countries_heat_cold_wave.geojson"></script>
+        <script src="Data/countries_human_rights.geojson"></script>
+        <script src="Data/countries_insect.geojson"></script>
+        <script src="Data/countries_measles.geojson"></script>
+        <script src="Data/countries_multiple_emergencies.geojson"></script>
+        <script src="Data/countries_post_conflict.geojson"></script>
+        <script src="Data/countries_refugee.geojson"></script>
+        <script src="Data/countries_storm.geojson"></script>
+        <script src="Data/countries_unspecified_emergency.geojson"></script>
+        <script src="Data/countries_unspecified_health_emergency.geojson"></script>
+        <script src="Data/countries_violent_clashes.geojson"></script>
+        <script src="Data/countries_volcano.geojson"></script>
+
+    </head>
+    <body>
+        <h1 id="title">CERF Humanitarian Efforts and Contributions by Disaster Type (2006-2022)</h1>
+
+        <div id="sidebar">
+            <a href="https://cerf.un.org/" target="_blank">
+                <img src="https://seekvectorlogo.net/wp-content/uploads/2019/11/united-nations-cerf-central-emergency-response-fund-vector-logo.png" alt="United Nations Central Emergency Response Fund" class="cerf_logo" style="width:100%">
+            </a>
+
+            <a href="https://cerf.un.org/about-us/who-we-are" target="_blank" style="color:#5b92e5"><h3>About CERF</h3></a>
+
+            <p class="lorem">CERF is one of the fastest and most effective ways to ensure that urgently needed humanitarian assistance reaches people caught up in crises. Established by the United Nations General Assembly in 2005 as the United Nations global emergency response fund, CERF enables humanitarian responders to deliver life-saving assistance whenever and wherever crises stri</p>
+
+            <p class="lorem">As an essential enabler of global humanitarian action, CERF’s <a href="https://cerf.un.org/apply-for-a-grant/rapid-response" target="_blank">Rapid Response</a> window allows country teams to kick-start relief efforts immediately in a coordinated and prioritized response when a new crisis emerges. CERF’s window for <a href="https://cerf.un.org/apply-for-a-grant/underfunded-emergencies" target="_blank">Underfunded Emergencies</a> helps scale-up and sustain protracted relief operations to avoid critical gaps when no other funding is available.</p>
+
+            <p class="lorem">The Emergency Relief Coordinator manages CERF on behalf of the UN Secretary-General and is supported by the CERF secretariat, which ensures that funds are allocated properly, disbursed in a timely manner, and that the use of funds is reported appropriately and transparently. The CERF Advisory Group provides policy guidance to the Secretary-General on the use and impact of the fund.</p>
+
+            <p class="lorem">Since its inception in 2006, 126 UN Member States and observers, as well as regional Governments, corporate donors, foundations and individuals, made it possible for humanitarian partners to deliver over $5.5 billion in life-saving assistance in over 100 countries and territories. Many recipient countries also become a donor to CERF and contribute, making CERF a fund for all, by all. </p>
+
+            <h3 style="text-align: center; color:#5b92e5">Emergency Types:</h3>
+
+            <!--      Sidebar Buttons      -->
+            <button id="total" type="button" class="btn btn-secondary btn-sm btn-block">Total</button>
+            <button id="cholera" type="button" class="btn btn-secondary btn-sm btn-block">Cholera Outbreak</button>
+            <button id="displacement" type="button" class="btn btn-secondary btn-sm btn-block">Displacement</button>
+            <button id="drought" type="button" class="btn btn-secondary btn-sm btn-block">Drought</button>
+            <button id="earthquake" type="button" class="btn btn-secondary btn-sm btn-block">Earthquake</button>
+            <button id="ebola" type="button" class="btn btn-secondary btn-sm btn-block">Ebola Outbreak</button>
+            <button id="econ" type="button" class="btn btn-secondary btn-sm btn-block">Economic Disruptions</button>
+            <button id="flood" type="button" class="btn btn-secondary btn-sm btn-block">Flood</button>
+            <button id="wave" type="button" class="btn btn-secondary btn-sm btn-block">Heat/Cold Wave</button>
+            <button id="human" type="button" class="btn btn-secondary btn-sm btn-block">Human Rights</button>
+            <button id="insect" type="button" class="btn btn-secondary btn-sm btn-block">Insect Infestation</button>
+            <button id="measles" type="button" class="btn btn-secondary btn-sm btn-block">Measles Outbreak</button>
+            <button id="multiple" type="button" class="btn btn-secondary btn-sm btn-block">Multiple Emergencies</button>
+            <button id="postConflict" type="button" class="btn btn-secondary btn-sm btn-block">Post Conflict Needs</button>
+            <button id="refugee" type="button" class="btn btn-secondary btn-sm btn-block">Refugees</button>
+            <button id="storm" type="button" class="btn btn-secondary btn-sm btn-block">Severe Storms</button>
+            <button id="unEm" type="button" class="btn btn-secondary btn-sm btn-block">Unspecified Emergency</button>
+            <button id="unHeEm" type="button" class="btn btn-secondary btn-sm btn-block">Unspecified Health Emergency</button>
+            <button id="clash" type="button" class="btn btn-secondary btn-sm btn-block">Violent Clashes</button>
+            <button id="volcano" type="button" class="btn btn-secondary btn-sm btn-block">Volcano Eruption</button>
+        </div>
+        <div id="map"></div>
+        
+        <!--    Load Ajax JQuary Turf.js    -->
+        <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+        
+        <!--    Load my script    -->
+        <script src='src/map.js'></script>
+    </body>
+</html>
